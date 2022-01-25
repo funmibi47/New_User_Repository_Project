@@ -1,0 +1,63 @@
+<div>
+  
+    <h2 class="form-header">join </h2>
+    <form class="form-container" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="fullname" id="fullname">Name:</label>
+        <input
+        type="text"
+        id="fullname"
+        class="form-control"
+        formControlName="fullname"
+        [(ngModel)]="user.fullname"
+        />
+        <p class="error-msg"
+          *ngIf="
+          this.contactForm.get('fullname')?.touched && !this.contactForm.get('fullname')?.valid">
+        Please this is required
+      </p>
+      </div>
+      <div class="form-group">
+        <label for="email" id="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+          [(ngModel)]="user.email"
+        />
+        <p *ngIf="this.contactForm.get('email')?.touched && !this.contactForm.get('email')?.valid">
+          This is not a valid email.
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="phone" id="phone">Phone:</label>
+        <input
+          type="number"
+          id="phone"
+          class="form-control"
+          formControlName="phone"
+          [(ngModel)]="user.phone"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="password" id="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          class="form-control"
+          formControlName="password"
+          [(ngModel)]="user.password"
+        />
+        <p
+        *ngIf="
+        this.contactForm.get('password')?.touched && !this.contactForm.get('password')?.valid">
+      Minimum of eight characters
+    </p>
+      </div>
+      <button class="btn" type="submit">Submit</button>
+    </form>
+  </div>
+   
+   
